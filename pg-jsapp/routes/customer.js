@@ -1,14 +1,11 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const db = require("../db");
+import { fetchCustomers } from "../controller/controller.customer.js"
+
+
 router.get("/", (req, res) => {
-  db.any("SELECT id ,name FROM customers")
-    .then((row) => {
-      console.log(rows);
-      res.json(rows);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const customerData = fetchCustomers();
+  res.send(customerData);
 });
-module.exports = router;
+
+export default router;
