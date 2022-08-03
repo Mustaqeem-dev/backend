@@ -1,7 +1,8 @@
-const pgp = require("pg-promise")();
+import pgp from 'pg-promise';
 
 const connectionString =
-  "postgresql://postgres:process.env.REACT_APP_PASSWORDlocalhost: {process.env.REACT_APP_SECRET_KEY}";
+  `postgresql://postgres:process.env.REACT_APP_PASSWORDlocalhost: ${process.env.REACT_APP_SECRET_KEY}`;
 
-const db = pgp(connectionString);
-module.exports = db;
+const db = pgp()(connectionString);
+
+export default db;
