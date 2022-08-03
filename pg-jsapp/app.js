@@ -1,11 +1,17 @@
-const express = require("express");
-const port = 3000;
+import express from "express";
+import customersRouter from "./routes/customer.js";
 const app = express();
-const db = require("./db");
+
 
 app.use(express.json());
-const customersRouter = require("./routes/customer");
 app.use("/customers", customersRouter);
+
+app.get('/test', (req, res) => {
+  console.log('hello')
+  res.send('hello')
+})
+const port = 3000;
+
 app.listen(port, () =>
-  console.log("server running at http://localhost:${port}")
+  console.log(`server running at http://localhost:${port}`)
 );
