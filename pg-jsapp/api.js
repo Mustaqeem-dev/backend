@@ -6,8 +6,8 @@ const app = express();
 import pg from "pg";
 const Client = pg.Client;
 app.use(express.json());
-
 console.log(Client);
+
 const client = new Client({
   host: "localhost",
   user: "postgres",
@@ -33,7 +33,7 @@ app.get("/users", (req, res) => {
   console.log("here");
 
   client.query(
-    "SELECT id, firstname, lastname, location FROM public.users;",
+    "SELECT id, firstname, lastname, password, email FROM public.users;",
     (err, ressult) => {
       if (err) throw err;
       console.log(res);
