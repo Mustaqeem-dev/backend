@@ -4,6 +4,7 @@ const app = express();
 
 // This will be undefined since the property on pg is "Client" no "pgClient"
 import pg from "pg";
+// require('dotenv').config();
 const Client = pg.Client;
 app.use(express.json());
 console.log(Client);
@@ -17,7 +18,7 @@ const client = new Client({
 });
 
 app.listen(3006, () => {
-  console.log("Sever is now listening at port 3000");
+  console.log("Sever is now listening at port 3000", process.env.PGUSER);
 });
 
 client
