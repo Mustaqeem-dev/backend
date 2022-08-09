@@ -1,35 +1,34 @@
-// const client = require("./connection.js");
 import express from "express";
+import pg from "pg";
+
+const Client = pg.Client;
 const app = express();
 
-// This will be undefined since the property on pg is "Client" no "pgClient"
-import pg from "pg";
-// require('dotenv').config();
-const Client = pg.Client;
-app.use(express.json());
-console.log(Client);
+import userRoute from "./routes/user.js ";
 
-const client = new Client({
+app.use(express.json());
+
+app.listen(3006, () => {
+  console.log("Sever is now listening at port 3006");
+});
+
+const db = new Client({
   host: "localhost",
   user: "postgres",
   port: 5432,
-  password: "Mustaqeem1!",
   database: "new_database",
+  password: "Mustaqeem1!",
 });
 
-app.listen(3006, () => {
-  console.log("Sever is now listening at port 3000", process.env.PGUSER);
-});
-//------------------------------------------------------
-
-client
-  .connect()
+db.connect()
   .then(() => {
     console.log("connected");
   })
   .catch((err) => {
     console.error(err);
   });
+
+app.use("/user", userRoute);
 
 app.get("/users", (req, res) => {
   console.log("here");

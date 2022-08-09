@@ -1,5 +1,3 @@
-//my db config
-require("dotenv").config();
 const { Pool } = require("pg");
 const isProduction = process.env.NODE_ENV === "production";
 const conString = `postgres://${process.env.PGUSER}:@${process.env.PGPASSWORD}@${process.env.PGHOST}:5432/YourDatabaseName`;
