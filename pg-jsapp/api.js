@@ -20,6 +20,7 @@ const client = new Client({
 app.listen(3006, () => {
   console.log("Sever is now listening at port 3000", process.env.PGUSER);
 });
+//------------------------------------------------------
 
 client
   .connect()
@@ -63,8 +64,8 @@ app.use(bodyParser.json());
 app.post("/insert", (req, res) => {
   const user = req.body;
   console.log("body here", user);
-  let insertQuery = `insert into users(id, firstname, lastname, location) 
-                     values(${user.id}, '${user.firstname}', '${user.lastname}', '${user.location}')`;
+  let insertQuery = `insert into users(id, firstname, lastname, password, email) 
+                     values(${user.id}, '${user.firstname}', '${user.lastname}', '${user.password}','${user.email}')`;
 
   client.query(insertQuery, (err, result) => {
     if (result) {
@@ -85,7 +86,8 @@ app.put("/users/:id", (req, res) => {
   let updateQuery = `update users
                      set firstname = '${user.firstname}',
                      lastname = '${user.lastname}',
-                     location = '${user.location}'
+                     password= '${user.password}',
+                     email='${user.email}'                
                      where id = ${user.id}`;
 
   client.query(updateQuery, (err, result) => {
