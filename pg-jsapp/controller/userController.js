@@ -1,10 +1,10 @@
-import db from "../db/index.js";
+import client from "../db/index.js";
 
-export const fetchUser = () => {
-  db.any("SELECT id, firstname, lastname, password, email FROM users")
-    .then((row) => {
-      console.log("rows", row);
-      return row;
+export const fetchUser = async () => {
+  return await client
+    .query("SELECT id, firstname, lastname, password, email FROM public.users;")
+    .then((data) => {
+      return data.rows || [];
     })
     .catch((error) => {
       console.error(error);

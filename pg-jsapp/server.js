@@ -12,22 +12,6 @@ app.listen(3006, () => {
   console.log("Sever is now listening at port 3006");
 });
 
-const db = new Client({
-  host: "localhost",
-  user: "postgres",
-  port: 5432,
-  database: "new_database",
-  password: "Mustaqeem1!",
-});
-
-db.connect()
-  .then(() => {
-    console.log("connected");
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
 app.use("/user", userRoute);
 
 app.get("/users", (req, res) => {
