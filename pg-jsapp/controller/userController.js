@@ -1,8 +1,10 @@
 import client from "../db/index.js";
 
-export const fetchUser = async () => {
+export const fetchUser = async (email) => {
   return await client
-    .query("SELECT id, firstname, lastname, password, email FROM public.users;")
+    .query(
+      `SELECT id, firstname, lastname, password, email FROM public.users WHERE email = '${email}';`
+    )
     .then((data) => {
       return data.rows || [];
     })

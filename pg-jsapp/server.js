@@ -17,7 +17,7 @@ app.use("/user", userRoute);
 app.get("/users", (req, res) => {
   console.log("here");
 
-  client.query(
+  Client.query(
     "SELECT id, firstname, lastname, password, email FROM public.users;",
     (err, ressult) => {
       if (err) throw err;
