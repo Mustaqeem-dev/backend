@@ -1,3 +1,5 @@
+import randomInteger from "random-int";
+
 import client from "../db/index.js";
 
 export const fetchUser = async (email) => {
@@ -13,6 +15,22 @@ export const fetchUser = async (email) => {
     });
 };
 
+export const createUser = async (body) => {
+  const _id = randomInteger(10, 10000);
+  const { first_name, last_name, email, password } = body;
+  return await client
+    .query(
+      `INSERT INTO public.users(
+      id, firstname, lastname, password, email)
+      VALUES (${_id},'${first_name}', '${last_name}', '${password}', '${email}');`
+    )
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 // app.get("/users", (req, res) => {
 //   console.log("here");
 //   const userData = fetchUser();

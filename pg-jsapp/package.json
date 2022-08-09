@@ -21,6 +21,7 @@
     "nodemon": "^2.0.18",
     "pg": "^8.7.3",
     "pg-promise": "^10.11.1",
+    "random-int": "^3.0.0",
     "react-router-dom": "^6.3.0"
   }
 }
