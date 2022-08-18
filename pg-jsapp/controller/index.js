@@ -1,0 +1,1 @@
+export { fetchCustomers } from './controller.customer.js'

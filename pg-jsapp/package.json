@@ -4,18 +4,24 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -r dotenv/config server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config server.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
     "env-cmd": "^10.1.0",
     "express": "^4.18.1",
+    "express-validator": "^6.14.2",
     "nodemon": "^2.0.18",
     "pg": "^8.7.3",
     "pg-promise": "^10.11.1",
+    "random-int": "^3.0.0",
     "react-router-dom": "^6.3.0"
   }
 }

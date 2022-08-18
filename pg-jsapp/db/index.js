@@ -1,7 +1,15 @@
-const pgp = require("pg-promise")();
+import pg from "pg";
 
-const connectionString =
-  "postgresql://postgres:process.env.REACT_APP_PASSWORDlocalhost: {process.env.REACT_APP_SECRET_KEY}";
+const conString = `postgres://postgres:Mustaqeem1!@localhost:5432/new_database`;
 
-const db = pgp(connectionString);
-module.exports = db;
+var client = new pg.Client(conString);
+client
+  .connect()
+  .then(() => {
+    console.log("connected...");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+export default client;
